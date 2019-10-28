@@ -12,15 +12,15 @@ SET NOCOUNT ON;
 -- --------------------------------------------------------------------------------
 IF OBJECT_ID( 'TJobWorkers' )									IS NOT NULL DROP TABLE TJobWorkers
 IF OBJECT_ID( 'TJobMaterials' )									IS NOT NULL DROP TABLE TJobMaterials
-IF OBJECT_ID( 'TJobs' )											IS NOT NULL DROP TABLE TJobs
+IF OBJECT_ID( 'TJobs' )										IS NOT NULL DROP TABLE TJobs
 IF OBJECT_ID( 'TStatuses' )									IS NOT NULL DROP TABLE TStatuses
 IF OBJECT_ID( 'TWorkerSkills' )									IS NOT NULL DROP TABLE TWorkerSkills
 IF OBJECT_ID( 'TCustomers' )									IS NOT NULL DROP TABLE TCustomers
-IF OBJECT_ID( 'TWorkers' )										IS NOT NULL DROP TABLE TWorkers
-IF OBJECT_ID( 'TSkills' )										IS NOT NULL DROP TABLE TSkills
+IF OBJECT_ID( 'TWorkers' )									IS NOT NULL DROP TABLE TWorkers
+IF OBJECT_ID( 'TSkills' )									IS NOT NULL DROP TABLE TSkills
 IF OBJECT_ID( 'TMaterials' )									IS NOT NULL DROP TABLE TMaterials
-IF OBJECT_ID( 'TVendors' )										IS NOT NULL DROP TABLE TVendors
-IF OBJECT_ID( 'TStates' )										IS NOT NULL DROP TABLE TStates
+IF OBJECT_ID( 'TVendors' )									IS NOT NULL DROP TABLE TVendors
+IF OBJECT_ID( 'TStates' )									IS NOT NULL DROP TABLE TStates
 -- --------------------------------------------------------------------------------
 -- Create Tables
 -- --------------------------------------------------------------------------------
@@ -28,24 +28,24 @@ IF OBJECT_ID( 'TStates' )										IS NOT NULL DROP TABLE TStates
 CREATE TABLE TJobs
 (
 	 intJobID							INTEGER				NOT NULL
-	,intCustomerID						INTEGER				NOT NULL
-	,intStatusID						INTEGER				NOT NULL
-	,dtmStartDate						DATETIME			NOT NULL
+	,intCustomerID							INTEGER				NOT NULL
+	,intStatusID							INTEGER				NOT NULL
+	,dtmStartDate							DATETIME			NOT NULL
 	,dtmEndDate							DATETIME			NOT NULL
-	,strJobDesc							VARCHAR(2000)		NOT NULL
+	,strJobDesc							VARCHAR(2000)			NOT NULL
 		,CONSTRAINT TJobs_PK PRIMARY KEY ( intJobID )
 )
 
 -- --------------------------------------------------------------------------------
 CREATE TABLE TCustomers
 (
-	  intCustomerID						INTEGER				NOT NULL
+	  intCustomerID						INTEGER			NOT NULL
 	 ,strFirstName						VARCHAR(255)		NOT NULL
 	 ,strLastName						VARCHAR(255)		NOT NULL
 	 ,strAddress_#						VARCHAR(255)		NOT NULL
 	 ,strAddress_Street					Varchar(255)		Not Null
-	 ,strCity							VARCHAR(255)		NOT NULL
-	 ,intStateID						INTEGER				NOT NULL
+	 ,strCity						VARCHAR(255)		NOT NULL
+	 ,intStateID						INTEGER			NOT NULL
 	 ,strPhoneNumber					VARCHAR(255)		NOT NULL
 		,CONSTRAINT TCustomer_PK PRIMARY KEY ( intCustomerID )
 )
@@ -53,7 +53,7 @@ CREATE TABLE TCustomers
 -- --------------------------------------------------------------------------------
 CREATE TABLE TStatuses
 (
-	 intStatusID						INTEGER				NOT NULL
+	 intStatusID							INTEGER			NOT NULL
 	,strStatus							VARCHAR(255)		NOT NULL
 		,CONSTRAINT TStatuses_PK PRIMARY KEY ( intStatusID )
 )
@@ -62,7 +62,7 @@ CREATE TABLE TStatuses
 CREATE TABLE TJobMaterials
 (
 	 intJobMaterialID					INTEGER				NOT NULL
-	,intJobID							INTEGER				NOT NULL
+	,intJobID						INTEGER				NOT NULL
 	,intMaterialID						INTEGER				NOT NULL
 	,intQuantity						INTEGER				NOT NULL
 		,CONSTRAINT TCustomerJobMaterials_PK PRIMARY KEY ( intJobMaterialID )
@@ -72,8 +72,8 @@ CREATE TABLE TJobMaterials
 CREATE TABLE TMaterials
 (
 	 intMaterialID						INTEGER				NOT NULL
-	,strDescription						VARCHAR(255)		NOT NULL
-	,monCost							MONEY				NOT NULL
+	,strDescription						VARCHAR(255)			NOT NULL
+	,monCost						MONEY				NOT NULL
 	,intVendorID						INTEGER				NOT NULL
 		,CONSTRAINT TMaterials_PK PRIMARY KEY ( intMaterialID )
 )
@@ -81,11 +81,11 @@ CREATE TABLE TMaterials
 -- --------------------------------------------------------------------------------
 CREATE TABLE TVendors
 (
-	 intVendorID						INTEGER				NOT NULL
+	 intVendorID						INTEGER			NOT NULL
 	,strVendorName						VARCHAR(255)		NOT NULL
-	,strAddress							VARCHAR(255)		NOT NULL
-	,strCity							VARCHAR(255)		NOT NULL
-	,intStateID							INTEGER				NOT NULL
+	,strAddress						VARCHAR(255)		NOT NULL
+	,strCity						VARCHAR(255)		NOT NULL
+	,intStateID						INTEGER			NOT NULL
 	,strPhoneNumber						VARCHAR(255)		NOT NULL
 		,CONSTRAINT TVendors_PK	 PRIMARY KEY ( intVendorID )
 )
@@ -94,7 +94,7 @@ CREATE TABLE TVendors
 CREATE TABLE TJobWorkers
 (
 	 intJobWorkerID						INTEGER				NOT NULL
-	,intJobID							INTEGER				NOT NULL
+	,intJobID						INTEGER				NOT NULL
 	,intWorkerID						INTEGER				NOT NULL
 	,intHoursWorked						INTEGER				NOT NULL
 		,CONSTRAINT TCustomerJobWorkers_PK	PRIMARY KEY ( intJobWorkerID )
@@ -103,15 +103,15 @@ CREATE TABLE TJobWorkers
 -- --------------------------------------------------------------------------------
 CREATE TABLE TWorkers
 (
-	 intWorkerID						INTEGER				NOT NULL
+	 intWorkerID						INTEGER			NOT NULL
 	 ,strFirstName						VARCHAR(255)		NOT NULL
 	 ,strLastName						VARCHAR(255)		NOT NULL
 	 ,strAddress						VARCHAR(255)		NOT NULL
-	 ,strCity							VARCHAR(255)		NOT NULL
-	 ,intStateID						INTEGER				NOT NULL
+	 ,strCity						VARCHAR(255)		NOT NULL
+	 ,intStateID						INTEGER			NOT NULL
 	 ,strPhoneNumber					VARCHAR(255)		NOT NULL
-	 ,dtmHireDate						DATETIME			NOT NULL
-	 ,monHourlyRate						MONEY				NOT NULL
+	 ,dtmHireDate						DATETIME		NOT NULL
+	 ,monHourlyRate						MONEY			NOT NULL
 		 ,CONSTRAINT TWorkers_PK PRIMARY KEY ( intWorkerID )
 )
 
@@ -120,23 +120,23 @@ CREATE TABLE TWorkerSkills
 (
 	 intWorkerSkillID					INTEGER				NOT NULL
 	,intWorkerID						INTEGER				NOT NULL
-	,intSkillID							INTEGER				NOT NULL
+	,intSkillID							INTEGER			NOT NULL
 		,CONSTRAINT	TWorkerSkills_PK PRIMARY KEY ( intWorkerSkillID )
 )
 
 -- --------------------------------------------------------------------------------
 CREATE TABLE TSkills
 (
-	 intSkillID							INTEGER				NOT NULL
+	 intSkillID							INTEGER			NOT NULL
 	,strSkill							VARCHAR(255)		NOT NULL
-	,strDescription						VARCHAR(255)		NOT NULL
+	,strDescription							VARCHAR(255)		NOT NULL
 		,CONSTRAINT TSkills_PK PRIMARY KEY ( intSkillID )
 )
 
 -- --------------------------------------------------------------------------------
 CREATE TABLE TStates
 (
-	 intStateID							INTEGER				NOT NULL
+	 intStateID							INTEGER			NOT NULL
 	,strState							VARCHAR(255)		NOT NULL
 		,CONSTRAINT TStates_PK PRIMARY KEY ( intStateID )
 )
@@ -152,8 +152,8 @@ CREATE TABLE TStates
 
 -- 3	TCustomers						TStates							intStateID  
 
--- 4	TJobMaterials					TJobs							intJobID 
--- 5	TJobMaterials					TMaterials						intMaterialID  
+-- 4	TJobMaterials						TJobs							intJobID 
+-- 5	TJobMaterials						TMaterials						intMaterialID  
 
 -- 6	TMaterials						TVendors						intVendorID  
 
@@ -164,8 +164,8 @@ CREATE TABLE TStates
 
 -- 10	TWorkers						TStates							intStateID   
 
--- 11	TWorkerSkills					TWorkers						intWorkerID   
--- 12	TWorkerSkills					TSkills							intSkillID   
+-- 11	TWorkerSkills						TWorkers						intWorkerID   
+-- 12	TWorkerSkills						TSkills							intSkillID   
 
 
 -- 1
