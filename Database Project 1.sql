@@ -13,12 +13,12 @@ SET NOCOUNT ON; -- Report only errors
 
 If Object_ID ('TDoctorsPatients')		Is Not Null		Drop Table TDoctorsPatients
 If Object_ID ('TNursesPatients')		Is Not Null		Drop Table TNursesPatients
-If Object_ID ('TPatientsAppointments')	Is Not Null		Drop Table TPatientsAppointments
-If Object_ID ('TNursesAppointments')	Is Not Null		Drop Table TNursesAppointments
+If Object_ID ('TPatientsAppointments')		Is Not Null		Drop Table TPatientsAppointments
+If Object_ID ('TNursesAppointments')		Is Not Null		Drop Table TNursesAppointments
 If Object_ID ('TAppointments')			Is Not Null		Drop Table TAppointments
-If Object_ID ('TPatients')				Is Not Null		Drop Table TPatients
-If Object_ID ('TNurses')				Is Not Null		Drop Table TNurses
-If Object_ID ('TDoctors')				Is Not Null		Drop Table TDoctors
+If Object_ID ('TPatients')			Is Not Null		Drop Table TPatients
+If Object_ID ('TNurses')			Is Not Null		Drop Table TNurses
+If Object_ID ('TDoctors')			Is Not Null		Drop Table TDoctors
 
 --------------------------------------------------------------------------------------
 -- Create Tables
@@ -27,17 +27,17 @@ If Object_ID ('TDoctors')				Is Not Null		Drop Table TDoctors
 Create Table TDoctors
 (
 	intDoctorID			Integer			Not Null
-	,strFirstName		Varchar(25)		Not Null
-	,strLastName		Varchar(25)		Not Null
+	,strFirstName			Varchar(25)		Not Null
+	,strLastName			Varchar(25)		Not Null
 	,strAddress			Varchar(25)		Not Null
 	,strCity			Varchar(25)		Not Null
 	,strState			Varchar(25)		Not Null
 	,txtZIP				Varchar(25)		Not Null
 	,strGender			Varchar(25)		Not Null
 	,strRace			Varchar(25)		Not Null
-	,dtmDatofHire		DateTime		Not Null
-	,dtmTerminationDate	DateTime		
-	,dtmBoardsDate		DateTime		Not Null
+	,dtmDatofHire			DateTime		Not Null
+	,dtmTerminationDate		DateTime		
+	,dtmBoardsDate			DateTime		Not Null
 		,Constraint TDoctors_PK Primary Key (intDoctorID)
 )
 
@@ -45,17 +45,17 @@ Create Table TDoctors
 Create Table TNurses
 (
 	intNurseID			Integer			Not Null
-	,strFirstName		Varchar(25)		Not Null
-	,strLastName		Varchar(25)		Not Null
+	,strFirstName			Varchar(25)		Not Null
+	,strLastName			Varchar(25)		Not Null
 	,strAddress			Varchar(25)		Not Null
 	,strCity			Varchar(25)		Not Null
 	,strState			Varchar(25)		Not Null
 	,txtZIP				Varchar(25)		Not Null
 	,strGender			Varchar(25)		Not Null
 	,strRace			Varchar(25)		Not Null
-	,dtmDatofHire		DateTime		Not Null
-	,dtmTerminationDate	DateTime		
-	,dtmBoardsDate		DateTime		Not Null
+	,dtmDatofHire			DateTime		Not Null
+	,dtmTerminationDate		DateTime		
+	,dtmBoardsDate			DateTime		Not Null
 		,Constraint TNurses_PK Primary Key (intNurseID)
 )
 
@@ -63,9 +63,9 @@ Create Table TNurses
 
 Create Table TPatients
 (
-	intPatientID		Integer			Not Null
-	,strFirstName		Varchar(25)		Not Null
-	,strLastName		Varchar(25)		Not Null
+	intPatientID			Integer			Not Null
+	,strFirstName			Varchar(25)		Not Null
+	,strLastName			Varchar(25)		Not Null
 	,strAddress			Varchar(25)		Not Null
 	,strCity			Varchar(25)		Not Null
 	,strState			Varchar(25)		Not Null
@@ -73,12 +73,12 @@ Create Table TPatients
 	,strGender			Varchar(25)		Not Null
 	,strRace			Varchar(25)		Not Null
 	,dtmDOB				DateTime		Not Null
-	,strInsurance		Varchar(25)		Not Null
+	,strInsurance			Varchar(25)		Not Null
 	,strPhone			Varchar(25)		Not Null
 	,strEmail			Varchar(25)		Not Null
-	,strEmergencyContact Varchar(25)	Not Null
+	,strEmergencyContact 		Varchar(25)		Not Null
 	,strEPhone			Varchar(25)		Not Null
-	,strDiagnosis		Varchar(25)		Not Null
+	,strDiagnosis			Varchar(25)		Not Null
 		,Constraint TPatients_PK Primary Key (intPatientID)
 )
 
@@ -106,26 +106,26 @@ Create Table TDoctorsPatients
 Create Table TNursesPatients
 (
 	intNursesPatientsID		Integer		Not Null
-	,intNurseID			Integer			Not Null
-	,intPatientID		Integer			Not Null
+	,intNurseID			Integer		Not Null
+	,intPatientID			Integer		Not Null
 		,Constraint TNursesPatients_PK Primary Key (intNursesPatientsID)
 )
 
 
 Create Table TPatientsAppointments
 (
-	intPatientAppointmentID	Integer		Not Null
-	,intPatientID		Integer			Not Null
-	,intAppointmentID	Integer			Not Null
+	intPatientAppointmentID		Integer		Not Null
+	,intPatientID			Integer		Not Null
+	,intAppointmentID		Integer		Not Null
 		,Constraint TPatientsAppointments_PK Primary Key (intPatientAppointmentID)
 )
 
 
 Create Table TNursesAppointments
 (
-	intNursesAppointmentsID	Integer		Not Null
-	,intNurseID			Integer			Not Null
-	,intAppointmentID	Integer			Not Null
+	intNursesAppointmentsID		Integer		Not Null
+	,intNurseID			Integer		Not Null
+	,intAppointmentID	I	nteger		Not Null
 		,Constraint TNursesAppointments_PK Primary Key (intNursesAppointmentsID)
 )
 
@@ -141,8 +141,8 @@ Create Table TNursesAppointments
 --3		TDoctorsPatients				TPatients					intPatientID
 --4		TNursesPatients					TPatients					intPatientID
 --5		TNursesPatients					TNurses						intNurseID
---6		TPatientsAppointments			TPatients					intPatientID
---7		TPatientsAppointments			TAppointments				intAppointmentID
+--6		TPatientsAppointments				TPatients					intPatientID
+--7		TPatientsAppointments				TAppointments				intAppointmentID
 --8		TNursesAppointments				TNurses						intNurseID
 --9		TNursesAppointments				TAppointments				intAppointmentID
 
